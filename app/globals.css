@@ -1,0 +1,132 @@
+@import "tailwindcss";
+
+/* ============================================================
+   Дизайн-система магазина «Флёр»
+   Тёплая кремовая база, глубокий ботанический зелёный,
+   акцент — пыльная роза. Светлая и тёмная темы.
+   ============================================================ */
+
+:root {
+  --cream: #f7f3ec;
+  --surface: #ffffff;
+  --surface-2: #f1ece1;
+  --ink: #24281f;
+  --ink-soft: #5c6355;
+  --green: #33473a;
+  --green-deep: #26362b;
+  --sage: #93a98c;
+  --blush: #bd6274;
+  --blush-soft: #ecd2d8;
+  --line: #e6dfcf;
+  --shadow: 20 30 20;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --cream: #14180f;
+    --surface: #1b2016;
+    --surface-2: #212819;
+    --ink: #eceade;
+    --ink-soft: #a6ad99;
+    --green: #8fb894;
+    --green-deep: #a9cbad;
+    --sage: #7d9578;
+    --blush: #e19aa7;
+    --blush-soft: #3a2a2d;
+    --line: #2f3726;
+    --shadow: 0 0 0;
+  }
+}
+
+:root[data-theme="light"] {
+  --cream: #f7f3ec;
+  --surface: #ffffff;
+  --surface-2: #f1ece1;
+  --ink: #24281f;
+  --ink-soft: #5c6355;
+  --green: #33473a;
+  --green-deep: #26362b;
+  --sage: #93a98c;
+  --blush: #bd6274;
+  --blush-soft: #ecd2d8;
+  --line: #e6dfcf;
+  --shadow: 20 30 20;
+}
+
+:root[data-theme="dark"] {
+  --cream: #14180f;
+  --surface: #1b2016;
+  --surface-2: #212819;
+  --ink: #eceade;
+  --ink-soft: #a6ad99;
+  --green: #8fb894;
+  --green-deep: #a9cbad;
+  --sage: #7d9578;
+  --blush: #e19aa7;
+  --blush-soft: #3a2a2d;
+  --line: #2f3726;
+  --shadow: 0 0 0;
+}
+
+@theme inline {
+  --color-cream: var(--cream);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-green: var(--green);
+  --color-green-deep: var(--green-deep);
+  --color-sage: var(--sage);
+  --color-blush: var(--blush);
+  --color-blush-soft: var(--blush-soft);
+  --color-line: var(--line);
+  --font-display: var(--font-display), Georgia, serif;
+  --font-sans: var(--font-sans), system-ui, sans-serif;
+}
+
+* {
+  border-color: var(--line);
+}
+
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display), Georgia, serif;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+/* Видимый фокус для клавиатурной навигации */
+:focus-visible {
+  outline: 2px solid var(--blush);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Мелкая заглавная надпись-«эйнбраузер» */
+.eyebrow {
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--sage);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,59 @@
+// Схема базы данных магазина цветов.
+// Локально используется SQLite (файл dev.db) — ничего устанавливать не нужно.
+// Для продакшена на Vercel provider меняется на "postgresql" (см. README).
+
+generator client {
+  provider = "prisma-client"
+  output   = "../app/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model Category {
+  id       Int       @id @default(autoincrement())
+  name     String
+  slug     String    @unique
+  order    Int       @default(0)
+  products Product[]
+}
+
+model Product {
+  id          Int      @id @default(autoincrement())
+  name        String
+  slug        String   @unique
+  description String   @default("")
+  price       Int // цена в рублях
+  image       String   @default("")
+  inStock     Boolean  @default(true)
+  featured    Boolean  @default(false)
+  categoryId  Int
+  category    Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  createdAt   DateTime @default(now())
+}
+
+model Order {
+  id           Int         @id @default(autoincrement())
+  customerName String
+  phone        String
+  address      String
+  deliveryDate String      @default("")
+  deliveryTime String      @default("")
+  comment      String      @default("")
+  payment      String      @default("cash") // cash | card
+  status       String      @default("new") // new | processing | done
+  total        Int
+  items        OrderItem[]
+  createdAt    DateTime    @default(now())
+}
+
+model OrderItem {
+  id        Int    @id @default(autoincrement())
+  orderId   Int
+  order     Order  @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  productId Int?
+  name      String
+  price     Int
+  quantity  Int
+}
