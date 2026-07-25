@@ -1,20 +1,19 @@
 import { PrismaClient } from "@/app/generated/prisma/client";
-import { PrismaLibSql } from "@prisma/adapter-libsql";
+import { PrismaPg } from "@prisma/adapter-pg";
 
 // Единственный экземпляр Prisma на всё приложение.
 // В dev-режиме Next.js перезагружает модули — без этого singleton
 // плодились бы новые подключения к базе при каждом hot-reload.
 //
-// Prisma 7 работает через «драйвер-адаптеры». Локально используется libSQL
-// поверх файла SQLite (dev.db). Для продакшена достаточно сменить DATABASE_URL
-// на строку подключения к облачной базе (Turso / Postgres — см. README).
+// Prisma 7 работает через «драйвер-адаптеры». Используется PostgreSQL (Neon);
+// строка подключения берётся из переменной окружения DATABASE_URL (см. README).
 const globalForPrisma = globalThis as unknown as {
   prisma: PrismaClient | undefined;
 };
 
 function createPrisma() {
-  const adapter = new PrismaLibSql({
-    url: process.env.DATABASE_URL ?? "file:./dev.db",
+  const adapter = new PrismaPg({
+    connectionString: process.env.DATABASE_URL,
   });
   return new PrismaClient({ adapter });
 }

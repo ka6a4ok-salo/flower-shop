@@ -1,6 +1,6 @@
 // Схема базы данных магазина цветов.
-// Локально используется SQLite (файл dev.db) — ничего устанавливать не нужно.
-// Для продакшена на Vercel provider меняется на "postgresql" (см. README).
+// Продакшен и локальная разработка используют облачный PostgreSQL (Neon).
+// Строка подключения задаётся через переменную окружения DATABASE_URL (см. README).
 
 generator client {
   provider = "prisma-client"
@@ -8,7 +8,7 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
 }
 
 model Category {
