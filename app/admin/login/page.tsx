@@ -46,10 +46,6 @@ export default function AdminLoginPage() {
           >
             {pending ? "Проверяем…" : "Войти"}
           </button>
-
-          <p className="mt-4 text-center text-xs text-ink-soft">
-            Демо-доступ: пароль <code className="text-blush">admin123</code>
-          </p>
         </form>
       </div>
     </div>
