@@ -7,6 +7,7 @@ import { logoutAction } from "@/lib/admin-actions";
 const links = [
   { href: "/admin", label: "Обзор", exact: true },
   { href: "/admin/products", label: "Товары" },
+  { href: "/admin/categories", label: "Категории" },
   { href: "/admin/orders", label: "Заказы" },
 ];
 

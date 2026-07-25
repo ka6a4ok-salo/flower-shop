@@ -168,22 +168,6 @@ export function ProductForm({
           ))}
         </div>
       </div>
-
-      <style jsx>{`
-        :global(.admin-input) {
-          margin-top: 0.375rem;
-          width: 100%;
-          border-radius: 0.75rem;
-          border: 1px solid var(--line);
-          background: var(--cream);
-          padding: 0.65rem 0.9rem;
-          color: var(--ink);
-          outline: none;
-        }
-        :global(.admin-input:focus) {
-          border-color: var(--blush);
-        }
-      `}</style>
     </form>
   );
 }

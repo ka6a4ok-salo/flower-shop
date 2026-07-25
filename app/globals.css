@@ -122,6 +122,21 @@ h4 {
   color: var(--sage);
 }
 
+/* Поля ввода в админке */
+.admin-input {
+  margin-top: 0.375rem;
+  width: 100%;
+  border-radius: 0.75rem;
+  border: 1px solid var(--line);
+  background: var(--cream);
+  padding: 0.65rem 0.9rem;
+  color: var(--ink);
+  outline: none;
+}
+.admin-input:focus {
+  border-color: var(--blush);
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
